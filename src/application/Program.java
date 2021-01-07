@@ -15,14 +15,21 @@ public class Program {
 	public static void main(String[] args) {
 		
 		SellerDao  sd = DaoFactory.createSellerDao();
-		System.out.println("=== TEST 1: Seller FindById ===");
+		System.out.println("\n=== TEST 1: Seller FindById ===");
 		Seller seller = sd.findById(3);
 		
 		System.out.println(seller);
 		
-		System.out.println("=== TEST 2: Seller FindByDepartment ===");
+		System.out.println("\n=== TEST 2: Seller FindByDepartment ===");
 		Department department = new Department(2, null);
 		List<Seller> list = sd.findByDepartment(department);
+		
+		for (Seller s : list) {
+			System.out.println(s);
+		}
+		
+		System.out.println("\n=== TEST 3: Seller FindAll ===");
+		list = sd.findAll();
 		
 		for (Seller s : list) {
 			System.out.println(s);
