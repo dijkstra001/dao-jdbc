@@ -3,6 +3,7 @@ package application;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
+import java.util.Scanner;
 
 import model.dao.DaoFactory;
 import model.dao.SellerDao;
@@ -14,7 +15,9 @@ public class Program {
 	SimpleDateFormat sdf = new SimpleDateFormat("dd/MMMM/yyyy");
 
 	public static void main(String[] args) {
-
+		
+		Scanner sc = new Scanner(System.in);
+		
 		SellerDao sd = DaoFactory.createSellerDao();
 		System.out.println("\n=== TEST 1: Seller FindById ===");
 		Seller seller = sd.findById(3);
@@ -54,6 +57,14 @@ public class Program {
 		for (Seller s : list) {
 			System.out.println(s);
 		}
+		
+		System.out.println("\n=== TEST 6: Seller Delete ===");
+		System.out.print("Enter id for delete test: ");
+		int id = sc.nextInt();
+		
+		sd.deleteById(id);
+		System.out.println("Delete completed.");
+		sc.close();
 
 	}
 
